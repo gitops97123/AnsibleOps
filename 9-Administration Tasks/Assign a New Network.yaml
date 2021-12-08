@@ -1,0 +1,14 @@
+--- 
+- name: 
+  hosts: servera.example.com 
+  vars:
+    network_connections:
+      - name: ens256
+        type: ethernet
+        ip:
+          address:
+            - 172.25.250.32/24
+  roles:
+    - rhel-system-roles.network
+  tasks: 
+    - command: nmcli con up ens256

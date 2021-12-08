@@ -1,0 +1,8 @@
+--- 
+- name: 
+  hosts: servera.example.com 
+  tasks: 
+  - command: nmcli con down "Wired connection 1"
+  - nmcli:
+      conn_name: "Wired connection 1"
+      state: absent

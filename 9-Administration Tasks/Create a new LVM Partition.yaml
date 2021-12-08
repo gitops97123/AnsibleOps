@@ -1,0 +1,38 @@
+--- 
+- name: 
+  hosts: servera.example.com 
+  tasks: 
+  - name: Create a new primary partition with a size of 1GiB
+    parted:
+      device: /dev/sdb
+      number: 2
+      flags: [ lvm ]
+      state: present
+      part_start: 1GiB
+  - command: partprobe /dev/sdb 
+
+  - name: Creating Volume Group 
+    lvg: 
+      vg: datacenter 
+      pvs: /dev/sdb2 
+      pesize: 8 
+
+  - name: Creating Logical Volume 
+    lvol: 
+      vg: datacenter 
+      lv: lv1 
+      size: 1g
+
+  - name: Creating filesystem for logical volume
+    filesystem: 
+      device: /dev/datacenter/lv1 
+      fstype: xfs 
+
+  - name: mounting for logical manager
+    mount: 
+      src: /dev/datacenter/lv1
+      path: /opt
+      fstype: xfs 
+      state: mounted
+      
+

@@ -1,0 +1,15 @@
+---
+- name: Scheduling with the at module
+  hosts: servera.example.com
+  become: True 
+  become_user: root
+  tasks: 
+  - name: scheduling at job  
+    cron: 
+      name: Add date and time to a file
+      minute: "*/1"
+      hour:  "*" 
+      weekday: "*"
+      user: student
+      job: date >> /home/student/date.print 
+      state: present

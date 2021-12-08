@@ -1,0 +1,39 @@
+--- 
+- name: 
+  hosts: servera.example.com 
+  tasks: 
+  - name: unmounting for logical manager
+    mount: 
+      src: /dev/datacenter/lv1
+      path: /opt
+      state: unmounted
+  - name: unmounting for partition
+    mount: 
+      src: /dev/sdb1
+      path: /mnt
+      state: unmounted
+  - name: Delete Logical Volume 
+    lvol: 
+      vg: datacenter 
+      lv: lv1 
+      force: yes 
+      state: absent
+
+  - name: Delete Volume Group 
+    lvg: 
+      vg: datacenter 
+      state: absent 
+
+      
+  - name: delete partition 1 with a size of 1GiB
+    parted:
+      device: /dev/sdb
+      number: 1
+      state: absent
+
+  - name: delete partition 2  with a size of 1GiB
+    parted:
+      device: /dev/sdb
+      number: 2
+      state: absent
+  - command: partprobe /dev/sdb 

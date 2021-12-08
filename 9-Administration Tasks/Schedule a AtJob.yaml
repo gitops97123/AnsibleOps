@@ -1,0 +1,11 @@
+---
+- name: 
+  hosts: servera.example.com 
+  tasks: 
+  - name: Create date and time file
+    at:
+      command: "date > ~/my_at_date_time\n"
+      count: 1
+      units: minutes
+      unique: yes
+      state: present
