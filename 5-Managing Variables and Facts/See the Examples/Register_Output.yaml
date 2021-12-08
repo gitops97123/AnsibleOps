@@ -1,0 +1,19 @@
+--- 
+- name:
+  hosts: dev 
+  tasks: 
+  - name: "Start the apache server"
+    become: true 
+    become_user: root
+    register: output 
+    shell: "httpd -k start" 
+    changed_when: "'already running' not in output.stdout"
+  - name: count numbers 
+    debug: 
+      msg: "{{output.stdout}}"  
+  - name: checking /tmp has more than 1gb 
+    shell: "df -h /tmp | grep -v Filesystem | awk '{print $4}' | cut -d G -f1"
+    register: tempspace 
+    failed_when: "tempspace.stdout | float < 1" 
+  - debug: 
+      msg: "{{tempspace.stdout}}"
