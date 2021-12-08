@@ -1,0 +1,16 @@
+[dev]
+servera.example.com
+
+[prod]
+servera.example.com 
+serverb.example.com  
+
+[test]
+server[d:e].example.com
+
+[webservers:children]
+dev
+test
+
+
+`	
