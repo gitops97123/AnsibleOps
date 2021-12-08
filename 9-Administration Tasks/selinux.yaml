@@ -1,0 +1,47 @@
+---
+- name: 
+  hosts: servera.example.com 
+  tasks: 
+  - name: Installing new httpd packages 
+    dnf: 
+      name: 
+        - httpd
+        - httpd-tools
+      state: present
+  - name: Creating custom directory 
+    file: 
+      dest: /root/httpd_custom 
+      state: directory 
+#semanage fcontext -at httpd_sys_content_t '/root/httpd_custom(/.*)?'
+  - name: Allow apache to modify files in /srv/git_repos
+    sefcontext:
+      target: '/root/httpd_custom(/.*)?'
+      setype: httpd_sys_content_t
+      state: present
+
+  - name: Apply Restorecon selinux
+    command: restorecon -irv /root/httpd_custom
+
+  - name: Enable SELinux
+    selinux:
+      policy: targeted
+      state: permissive 
+
+  - name: Allow Apache to listen on tcp port 82
+    seport:
+      ports: 82
+      proto: tcp
+      setype: http_port_t
+      state: present
+  - name: start and enable httpd service 
+    service: 
+      name: httpd
+      state: restarted 
+      enabled: true
+  - name: firewall open port 
+    firewalld: 
+      service: http 
+      permanent: true 
+      immediate: true 
+      state: enabled
+
