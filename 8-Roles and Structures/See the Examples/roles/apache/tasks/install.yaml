@@ -1,0 +1,3 @@
+- yum: 
+    name: "{{pkg}}"
+    state: present 

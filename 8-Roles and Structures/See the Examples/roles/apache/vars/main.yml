@@ -1,0 +1,10 @@
+---
+pkg:
+  - httpd 
+  - httpd-tools 
+src: files/index.html 
+path: /var/www/html
+svc: httpd 
+rule: http 
+
+

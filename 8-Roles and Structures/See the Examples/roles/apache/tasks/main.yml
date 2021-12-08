@@ -1,0 +1,9 @@
+---
+- name: Installing latest apache packages 
+  import_tasks: install.yaml
+- name: Configure httpd index.html 
+  import_tasks: config.yaml 
+- name: Start and Enable Service 
+  import_tasks: service.yaml
+- name: Open Port 
+  import_tasks: firewall.yaml 

@@ -1,0 +1,4 @@
+- copy: 
+    src: "{{src}}"
+    dest: "{{path}}/index.html"
+  notify: restart apache 
