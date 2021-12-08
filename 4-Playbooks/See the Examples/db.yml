@@ -1,0 +1,11 @@
+- name: Installing Database Server
+  yum:
+    name: 
+      - mariadb
+      - mariadb-server
+    state: latest
+- name: start and enable mariadb service 
+  service:
+    name: mariadb
+    state: started
+    enabled: true

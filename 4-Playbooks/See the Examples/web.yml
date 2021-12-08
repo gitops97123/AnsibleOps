@@ -1,0 +1,11 @@
+- name: Installing Apache Web Server 
+  yum: 
+    name: 
+      - httpd 
+      - httpd-tools
+    state: latest 
+- name: start and enable httpd service 
+  service: 
+    name: httpd
+    state: started 
+    enabled: true 

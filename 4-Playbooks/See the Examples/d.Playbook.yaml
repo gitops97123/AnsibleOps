@@ -1,0 +1,8 @@
+--- 
+- name: 
+  hosts: dev 
+  tasks: 
+  - name: Prepare the web server
+    import_tasks: web.yml
+  - name: Prepare the database server
+    import_tasks: db.yml
