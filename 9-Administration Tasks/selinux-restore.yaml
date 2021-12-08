@@ -1,0 +1,33 @@
+---
+- name: 
+  hosts: servera.example.com 
+  tasks: 
+  - name: Removing httpd packages 
+    dnf: 
+      name: 
+        - httpd
+        - httpd-tools
+      state: absent
+  - name: deleting custom directory 
+    file: 
+      dest: /root/httpd_custom 
+      state: absent
+
+  - name: Enforing SELinux
+    selinux:
+      policy: targeted
+      state: enforcing 
+
+  - name: Revoke Apache to listen on tcp port 82
+    seport:
+      ports: 82
+      proto: tcp
+      setype: http_port_t
+      state: absent 
+  - name: firewall close service http 
+    firewalld: 
+      service: http 
+      permanent: true 
+      immediate: true 
+      state: disabled
+
