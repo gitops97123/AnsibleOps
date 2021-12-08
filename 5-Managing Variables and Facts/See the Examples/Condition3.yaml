@@ -1,0 +1,15 @@
+--- 
+- name: 
+  hosts: dev
+  tasks: 
+  - name: Update and Upgrade System 
+    apt: 
+      update_cache: yes 
+      cache_valid_time: 3600
+      upgrade: dist 
+    when: ansible_distribution == "Debian" 
+  - name: Update and Upgrade System 
+    dnf: 
+      name: "*"
+      state: latest 
+    when: ansible_distribution == "RedHat"

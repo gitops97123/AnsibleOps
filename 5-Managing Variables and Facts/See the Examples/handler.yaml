@@ -1,0 +1,33 @@
+--- 
+- name: 
+  hosts: dev
+  tasks: 
+  - name: Installing apache required packages
+    yum: 
+      name: 
+        - httpd 
+        - httpd-tools
+      state: latest 
+
+  - name: content index.html write 
+    copy: 
+      content: "Hello custom page: {{ansible_hostname}}\n"
+      dest: /var/www/html/index.html
+    notify: restart apache 
+
+  - name: start and enable httpd 
+    service: 
+      name: httpd
+      state: started
+      enabled: true
+  - name: firewall open port 
+    firewalld: 
+      service: http 
+      permanent: true
+      immediate: true
+      state: enabled 
+  handlers:
+  - name: restart apache 
+    service:
+      name: httpd
+      state: restarted

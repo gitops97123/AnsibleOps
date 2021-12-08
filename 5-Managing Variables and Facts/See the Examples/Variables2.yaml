@@ -1,0 +1,33 @@
+--- 
+- name: 
+  hosts: dev 
+  vars: 
+    - usr_file: yes
+    - path: /home/student 
+  tasks: 
+  - name: delete file for {{ user }} 
+    file: 
+      path: "{{path}}/myfile.rishabh"
+      state: absent
+###########################
+
+- name: 
+  hosts: dev
+  vars: 
+    - path: /home/student
+  tasks: 
+  - name: check if the file already exists 
+    command: ls  "{{path}}/myfile.rishabh"
+    register: file_exists
+    ignore_errors: yes 
+  
+  - name: create file for user 
+    file: 
+      path: "{{path}}/myfile.rishabh"
+      state: touch 
+    when: file_exists is failed 
+
+  - name: show message if file exists 
+    debug: 
+      msg: the user file already exists 
+    when: file_exists is succeeded
