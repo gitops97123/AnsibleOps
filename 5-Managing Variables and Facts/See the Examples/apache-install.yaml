@@ -1,0 +1,28 @@
+--- 
+- name: 
+  hosts: dev 
+  tasks:
+  - name: Install apache  
+    dnf: 
+      name: 
+        - httpd 
+        - httpd-tools
+      state: present 
+    when: ansible_distribution == "CentOS" or ansible_distribution == "RedHat"
+  - name: placing html file 
+    template: 
+      src: index.html.j2
+      dest: /var/www/html/index.html
+   
+  - name: Start and enable apache service 
+    service: 
+      name: httpd
+      state: started
+      enabled: true
+  
+  - name: Open Port Firewall 
+    firewalld: 
+      service: http 
+      permanent: true 
+      immediate: true 
+      state: enabled

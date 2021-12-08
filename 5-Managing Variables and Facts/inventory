@@ -1,0 +1,17 @@
+[dev]
+servera 
+[prod]
+serverb
+serverc
+[test]
+serverd 
+servere
+[webservers:children]
+dev
+test
+
+[kube]
+classroom  ansible_user=root 
+
+
+

@@ -1,0 +1,14 @@
+--- 
+- name: 
+  hosts: dev 
+  tasks: 
+  - name: Erasing apache package
+    dnf: 
+      name: httpd 
+      state: absent
+  - name: Closing Port 
+    firewalld: 
+      service: http
+      permanent: true 
+      immediate: true 
+      state: disabled
