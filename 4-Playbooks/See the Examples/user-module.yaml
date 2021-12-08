@@ -1,0 +1,26 @@
+--- 
+- name: Creating multiple user 
+  hosts: dev
+  vars_files: 
+    - user_var.yaml 
+  vars: 
+    new: "zkPwsYw4hKbxo"
+  tasks: 
+  - name: Creating new group named "webadmin" 
+    group: 
+      name: webadmin 
+      state: present 
+  - name: Creating new users accounts
+    user: 
+      name: "{{ item.username }}"
+      groups: "{{ item.groups }}"
+      password: "{{ new }}"
+      update_password: always
+    loop: "{{ users }}"
+
+
+#     useradd user1 -G webadmin 
+#     useradd user2 -G webadmin 
+#     useradd user3 -G webadmin 
+#     useradd user4 -G webadmin 
+#     useradd user5 -G webadmin 
