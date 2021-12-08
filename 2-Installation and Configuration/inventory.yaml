@@ -1,0 +1,14 @@
+---
+webservers: 
+  children:
+    dev:
+      hosts: 
+        servera.example.com: 
+        serverb.example.com:
+    test:
+      hosts: 
+        serverc.example.com:
+        serverd.example.com: 
+prod: 
+  hosts: 
+    servere.example.com: 
