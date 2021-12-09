@@ -24,3 +24,22 @@ you need to edit this playbook.
 
   [student@workstation ansible]$ ansible-playbook  1.SSH-KeyPair.yaml  -e "ansible_user=root ansible_password=redhat"
 
+now play the playbook again, 
+
+  [student@workstation ansible]$ ansible-playbook  1.SSH-KeyPair.yaml
+
+  PLAY [SSH-KeyPair lab setup] *********************************************************************************************
+
+  TASK [Gathering Facts] ***************************************************************************************************
+  ok: [servera]
+
+  TASK [Copying Sudoers file] **********************************************************************************************
+  ok: [servera]
+
+  TASK [Copy authorized key] ***********************************************************************************************
+  ok: [servera]
+
+  PLAY RECAP ***************************************************************************************************************
+  servera                    : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+  [student@workstation ansible]$
