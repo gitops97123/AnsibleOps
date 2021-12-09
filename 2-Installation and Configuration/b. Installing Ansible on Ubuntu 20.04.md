@@ -62,6 +62,8 @@ Generating SSH keygen
     |            . ..+|
     +----[SHA256]-----+
 
+Checking the Ansible Version
+
     student@workstation:~$ ansible --version
     ansible 2.9.6
     config file = /etc/ansible/ansible.cfg
@@ -70,17 +72,25 @@ Generating SSH keygen
     executable location = /usr/bin/ansible
     python version = 3.8.10 (default, Sep 28 2021, 16:10:42) [GCC 9.3.0]
 
+Insert the hosts entry on Control node. 
+
     student@workstation:~$ vim /etc/hosts 
     192.168.245.131 workstation.example.com workstation 
     192.168.245.132 servera.example.com servera 
     192.168.245.133 serverb.example.com serverb 
 
+copy the hosts file to the both servera and serverb machine. 
+
     student@workstation:~$ for a in servera serverb ; do scp -r /etc/hosts root@$hosts:/etc/hosts ;done
+
+copy the public-key to the remote user student.
 
     student@workstation:~$ ssh-copy-id root@servera
     student@workstation:~$ ssh-copy-id root@serverb 
     student@workstation:~$ ssh-copy-id student@servera
     student@workstation:~$ ssh-copy-id student@serverb
+
+Copy the sudoers file to the both servera and serverb machine.  
 
     student@workstation:~$ scp -r /etc/sudoers.d/student root@servera:/etc/sudoers.d/student
     student@workstation:~$ scp -r /etc/sudoers.d/student root@serverb:/etc/sudoers.d/student
