@@ -54,7 +54,7 @@ Ansible can manage powerful automation tasks and can adapt to many different wor
 and environments. At the same time, new users of Ansible can very quickly use it to become
 productive.
 
-# Ansible Is Simple
+## Ansible Is Simple
 Ansible Playbooks provide human-readable automation. This means that playbooks are
 automation tools that are also easy for humans to read, comprehend, and change. No special
 coding skills are required to write them.
@@ -62,12 +62,12 @@ coding skills are required to write them.
 Playbooks execute tasks in order. The simplicity of playbook design makes them usable by every team, which allows people new to Ansible to get
 productive quickly
 
-# Ansible Is Powerful
+## Ansible Is Powerful
 You can use Ansible to deploy applications, for configuration management, for workflow
 automation, and for network automation. Ansible can be used to orchestrate the entire application
 life cycle
 
-# Ansible Is Agentless
+## Ansible Is Agentless
 Ansible is built around an agentless architecture. Typically, Ansible connects to the hosts it
 manages using OpenSSH or WinRM and runs tasks, often (but not always) by pushing out small
 programs called Ansible modules to those hosts. These programs are used to put the system in
@@ -77,7 +77,7 @@ approved for use and then deployed to the managed hosts. Because there are no ag
 additional custom security infrastructure, Ansible is more efficient and more secure than other
 alternatives
 
-# Ansible Concepts and Architecture
+## Ansible Concepts and Architecture
 
 Ansible has a number of important strengths:
 
@@ -102,4 +102,31 @@ your Ansible workflow.
 
 # Ansible: The Language of DevOps
 
-![alt text](Isolated(1).png)
+![dev1 logo](https://github.com/gitops97123/AnsibleOps/blob/main/icons/dev.PNG?raw=true "dev1 logo")
+
+Communication is the key to DevOps. Ansible is the first automation language that can be read
+and written across IT. It is also the only automation engine that can automate the application life
+cycle and continuous delivery pipeline from start to finish.
+
+
+# Ansible Concepts and Architecture
+There are two types of machines in the Ansible architecture: control nodes and managed hosts.
+Ansible is installed and run from a control node, and this machine also has copies of your Ansible
+project files. A control node could be an administrator's laptop, a system shared by a number of
+administrators, or a server running Red Hat Ansible Tower.
+
+Managed hosts are listed in an inventory, which also organizes those systems into groups for
+easier collective management. The inventory can be defined in a static text file, or dynamically
+determined by scripts that get information from external sources.
+
+Instead of writing complex scripts, Ansible users create high-level plays to ensure a host or group
+of hosts are in a particular state. A play performs a series of tasks on the hosts, in the order
+specified by the play. These plays are expressed in YAML format in a text file. A file that contains
+one or more plays is called a playbook.
+
+Each task runs a module, a small piece of code (written in Python, PowerShell, or some other
+language), with specific arguments. Each module is essentially a tool in your toolkit. Ansible ships
+with hundreds of useful modules that can perform a wide variety of automation tasks. They can act
+on system files, install software, or make API calls.
+
+![dev2 logo](https://github.com/gitops97123/AnsibleOps/blob/main/icons/dev2.PNG?raw=true "dev2 logo")
