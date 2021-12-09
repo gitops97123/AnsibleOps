@@ -43,3 +43,5 @@ now play the playbook again,
     servera                    : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 
     [student@workstation ansible]$
+
+    Now, can you focused you didn't apply the variable '-e' thats mean playbook is success executed.
