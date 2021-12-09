@@ -110,5 +110,12 @@ You can run the following command to list all hosts in a group:
     server4.example.com
 
 
-# Defining Variables in the Inventory
+### Defining Variables in the Inventory
 Values for variables used by playbooks can be specified in host inventory files. These variables only apply to specific hosts or host groups. Normally it is better to define these inventory variables in special directories and not directly in the inventory file. 
+
+### Describing a Dynamic Inventory
+Ansible inventory information can also be dynamically generated, using information provided by external databases. The open source community has written a number of dynamic inventory scripts that are available from the upstream Ansible project. If those scripts do not meet your needs, you can also write your own.
+
+For example, a dynamic inventory program could contact your Red Hat Satellite server or Amazon EC2 account, and use information stored there to construct an Ansible inventory. Because the program does this when you run Ansible, it can populate the inventory with up-to-date information provided by the service as new hosts are added and old hosts are removed.
+
+
