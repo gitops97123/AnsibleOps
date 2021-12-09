@@ -44,4 +44,4 @@ now play the playbook again,
 
     [student@workstation ansible]$
 
-    Now, can you focused you didn't apply the variable '-e' thats mean playbook is success executed.
+Now, can you focused you didn't apply the variable '-e' thats mean playbook is success executed.
