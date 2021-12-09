@@ -1,11 +1,8 @@
 # Building an Ansible Inventory
 
 ### Defining the Inventory
-An inventory defines a collection of hosts that Ansible will manage. These hosts can also be
-assigned to groups, which can be managed collectively. Groups can contain child groups, and hosts
-can be members of multiple groups. The inventory can also set variables that apply to the hosts
-and groups that it defines.
-
+An inventory defines a collection of hosts that Ansible will manage. These hosts can also be assigned to groups, which can be managed collectively. Groups can contain child groups, and hosts can be members of multiple groups. The inventory can also set variables that apply to the hosts and groups that it defines 
+/etc/ansible/hosts.
 
 ### Specifying Managed Hosts with a Static Inventory
 A static inventory file is a text file that specifies the managed hosts that Ansible targets. You
@@ -13,10 +10,10 @@ can write this file using a number of different formats, including INI-style or 
 
 In its simplest form, an INI-style static inventory file is a list of host names or IP addresses of managed hosts, each on a single line:<br>
 
-servera.example.com<br>
-serverb.example.com<br>
-192.168.245.132<br>
-192.168.245.133<br>
+    servera.example.com
+    serverb.example.com
+    192.168.245.132
+    192.168.245.133
 
 Normally, however, you organize managed hosts into host groups. Host groups allow you to more effectively run Ansible against a collection of systems. In this case, each section starts with a host group name enclosed in square brackets ([]). This is followed by the host name or an IP address for each managed host in the group, each on a single line.
 
@@ -98,3 +95,20 @@ Ranges match all values from START to END, inclusively. Consider the following e
 When in doubt, use the ansible command to verify a machine's presence in the inventory:
 
 
+
+    [root@workstation ~]# ansible server1.example.com --list-hosts
+    [WARNING]: provided hosts list is empty, only localhost is available
+    hosts (0):
+
+You can run the following command to list all hosts in a group:
+
+    [root@workstation ~]# ansible canada --list-hosts
+    hosts (4):
+    server1.example.com
+    server2.example.com
+    server3.example.com
+    server4.example.com
+
+
+# Defining Variables in the Inventory
+Values for variables used by playbooks can be specified in host inventory files. These variables only apply to specific hosts or host groups. Normally it is better to define these inventory variables in special directories and not directly in the inventory file. 
