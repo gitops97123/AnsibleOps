@@ -130,3 +130,53 @@ with hundreds of useful modules that can perform a wide variety of automation ta
 on system files, install software, or make API calls.
 
 ![dev2 logo](https://github.com/gitops97123/AnsibleOps/blob/main/icons/dev2.PNG?raw=true "dev2 logo")
+
+# The Ansible Way
+
+## Complexity Kills Productivity
+Simpler is better. Ansible is designed so that its tools are simple to use and automation is simple to
+write and read. You should take advantage of this to strive for simplification in how you create your
+automation.
+
+## Optimize For Readability
+The Ansible automation language is built around simple, declarative, text-based files that are
+easy for humans to read. Written properly, Ansible Playbooks can clearly document your workflow
+automation.
+## Think Declaratively
+Ansible is a desired-state engine. It approaches the problem of how to automate IT deployments
+by expressing them in terms of the state that you want your systems to be in. Ansible's goal is to
+put your systems into the desired state, only making changes that are necessary. Trying to treat
+Ansible like a scripting language is not the right approach.
+
+
+# Use Cases
+
+Unlike some other tools, Ansible combines and unites orchestration with configuration
+management, provisioning, and application deployment in one easy-to-use platform.
+
+Some use cases for Ansible include:
+
+## Configuration Management
+Centralizing configuration file management and deployment is a common use case for
+Ansible, and it is how many power users are first introduced to the Ansible automation
+platform.
+## Application Deployment
+When you define your application with Ansible, and manage the deployment with Red Hat
+Ansible Tower, teams can effectively manage the entire application life cycle from
+development to production.
+## Provisioning
+Applications have to be deployed or installed on systems. Ansible and Red Hat Ansible Tower
+can help streamline the process of provisioning systems, whether you are PXE booting and
+kickstarting bare-metal servers or virtual machines, or creating virtual machines or cloud
+instances from templates. Applications have to be deployed or installed on systems.
+## Continuous Delivery
+Creating a CI/CD pipeline requires coordination and buy-in from numerous teams. You cannot
+do it without a simple automation platform that everyone in your organization can use. Ansible
+Playbooks keep your applications properly deployed (and managed) throughout their entire
+life cycle.
+## Security and Compliance
+When your security policy is defined in Ansible Playbooks, scanning and remediation of sitewide security policies can be integrated into other automated processes. Instead of being an
+afterthought, it is an integral part of everything that is deployed.
+## Orchestration
+Configurations alone do not define your environment. You need to define how multiple
+configurations interact, and ensure the disparate pieces can be managed as a whole.
