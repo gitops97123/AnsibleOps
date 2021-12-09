@@ -104,5 +104,9 @@ Copy modules
     [student@workstation deploy-adhoc]$ ansible dev -m copy \
     > -a 'src=/etc/hosts" dest=/etc/hosts' -e "ansible_user=root ansible_password=redhat"
     
+User Modules: 
 
-
+    [student@workstation ~]$ ansible -m user -a "name=newbie uid=4000 state=present" \
+    > servera.lab.example.com
+    [student@workstation ~]$ ansible -m user -a "name=newbie state=absent" \
+    > servera.lab.example.com
