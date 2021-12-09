@@ -27,10 +27,6 @@ Install Red Hat Ansible Engine.
     
     [root@workstation ~]# yum install ansible
 
-If you are using the version with limited support provided with your Red Hat Enterprise Linux subscription, use the following procedure:
+Verify the Ansible version. 
 
-Enable the Red Hat Ansible Engine repository.
-    
-    [root@workstation ~]# subscription-manager refresh
-    [root@workstation ~]# subscription-manager repos --enable ansible-2.9-for-rhel-8-x86_64-rpms
-
+    [root@workstation ~]# ansible --version 
