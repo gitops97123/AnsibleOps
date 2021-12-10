@@ -208,7 +208,7 @@ successful syntax verification of a playbook.
 
 # Implementing Multiple Plays
 
-# Writing Multiple Plays
+### Writing Multiple Plays
 
 A playbook is a YAML file containing a list of one or more plays. Remember that a single play is an
 ordered list of tasks to execute against hosts selected from the inventory. Therefore, if a playbook
@@ -247,7 +247,7 @@ The following example shows a simple playbook with two plays. The first play run
           name: mariadb
           enabled: true
 
-# Remote Users and Privilege Escalation in Plays
+### Remote Users and Privilege Escalation in Plays
 Tasks in playbooks are normally executed through a network connection to the managed hosts. As
 with ad hoc commands, the user account used for task execution depends on various keywords in
 the Ansible configuration file, **/etc/ansible/ansible.cfg**. The user that runs the tasks can be
@@ -258,14 +258,14 @@ Plays can use different remote users or privilege escalation settings for a play
 specified by the defaults in the configuration file. These are set in the play itself at the same level
 as the **hosts** or **tasks** keywords.
 
-## User Attributes
+### User Attributes
 
 If the remote user defined in the Ansible configuration for task execution is not suitable, it can be
 overridden by using the **remote_user** keyword within a play.
 
     remote_user: remoteuser
 
-## Privilege Escalation Attributes
+### Privilege Escalation Attributes
 
 Additional keywords are also available to define privilege escalation parameters from within a
 playbook. The **become** boolean keyword can be used to enable or disable privilege escalation
@@ -298,7 +298,7 @@ The following example demonstrates the use of these keywords in a play:
           line: '192.168.245.131 servera.example.com server'
           state: present
 
-# YAML Strings
+### YAML Strings
 Strings in YAML do not normally need to be put in quotation marks even if there are spaces
 contained in the string. You can enclose strings in either double quotes or single quotes.
 
@@ -323,7 +323,7 @@ that newline characters within the string are to be preserved.
             that will become
             a single sentence once folded.
 
-# YAML Dictionaries
+### YAML Dictionaries
 
 You have seen collections of key-value pairs written as an indented block, as follows:
 
@@ -335,7 +335,7 @@ Dictionaries can also be written in an inline block format enclosed in curly bra
 
      {name: svcrole, svcservice: httpd, svcport: 80}
 
-# YAML Lists
+### YAML Lists
 You have also seen lists written with the normal single-dash syntax:
 
     hosts:
@@ -349,7 +349,7 @@ Lists also have an inline format enclosed in square braces, as follows:
 
 You should avoid this syntax because it is usually harder to read.
 
-# Obsolete key=value Playbook Shorthand
+### Obsolete key=value Playbook Shorthand
 
 Some playbooks might use an older shorthand method to define tasks by putting the key-value
 pairs for the module on the same line as the module name. For example, you might see this syntax:
